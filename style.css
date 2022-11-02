@@ -77,11 +77,14 @@ a.button2:hover{
 	justify-content: space-between;
 }
 
-.logo{
-	width: 100px;
-	height: auto;
+.logo {
+	width: 150px;
 	margin: 20px 0px;
 	display: flex;
+}
+
+.logo img {
+	width: 100%;
 }
 
 /*banner*/
