@@ -14,7 +14,7 @@
 header {
   width: 100%;
   height: 50vh;
-  min-height: 300px;
+  min-height: 320px;
   justify-content: center;
   align-items: center;
   display: flex;
