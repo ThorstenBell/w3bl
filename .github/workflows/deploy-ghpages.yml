@@ -1,0 +1,49 @@
+name: Deploy to Github Pages
+run-name: ${{ github.actor }} is deploying code to Github Pages 🚀
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v3
+
+      # Setup Node.js environment
+      - uses: actions/setup-node@v4
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the website
+      - name: Build website
+        run: npm run build
+
+      # Checkout the target branch (e.g., gh-pages)
+      - name: Checkout target branch
+        uses: actions/checkout@v3
+        with:
+          ref: test  # Replace with your target branch (e.g., 'gh-pages')
+
+      # Copy the contents from dist to the root directory
+      - name: Copy built files
+        run: |
+          rm -rf *
+          cp -r ../dist/* .
+
+      # Configure git
+      - name: Configure git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      # Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m "Deploying to gh-pages"
+          git push origin gh-pages
