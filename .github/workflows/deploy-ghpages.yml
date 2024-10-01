@@ -33,7 +33,7 @@ jobs:
       - name: Copy built files
         run: |
           rm -rf *
-          cp -r ../dist/* .
+          cp -r ./dist/* .
 
       # Configure git
       - name: Configure git
