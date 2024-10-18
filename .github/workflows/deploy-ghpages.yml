@@ -29,21 +29,27 @@ jobs:
         with:
           ref: test  # Replace with your target branch (e.g., 'gh-pages')
 
-      # Copy the contents from dist to the root directory
-      - name: Copy built files
+      - name: List directories in a directory
         run: |
-          rm -rf *
-          cp -r ./dist/* .
-
-      # Configure git
-      - name: Configure git
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-      # Commit and push changes
-      - name: Commit and push changes
-        run: |
-          git add .
-          git commit -m "Deploying to gh-pages"
-          git push origin gh-pages
+          echo "Listing directories:"
+          for dir in $(ls -d */); do
+            echo $dir
+          done
+#      # Copy the contents from dist to the root directory
+#      - name: Copy built files
+#        run: |
+#          rm -rf *
+#          cp -r ./dist/* .
+#
+#      # Configure git
+#      - name: Configure git
+#        run: |
+#          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+#          git config --local user.name "github-actions[bot]"
+#
+#      # Commit and push changes
+#      - name: Commit and push changes
+#        run: |
+#          git add .
+#          git commit -m "Deploying to gh-pages"
+#          git push origin gh-pages
