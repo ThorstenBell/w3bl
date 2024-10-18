@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  jobs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       # Checkout the code
@@ -28,6 +28,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: test  # Replace with your target branch (e.g., 'gh-pages')
+
+      - name: List directories in a directory
+        run: |
+          echo "Listing directories:"
+          for dir in $(ls -d */); do
+            echo $dir
+          done
 
       # Copy the contents from dist to the root directory
       - name: Copy built files
