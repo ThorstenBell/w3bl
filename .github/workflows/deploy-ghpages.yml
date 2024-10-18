@@ -31,7 +31,7 @@ jobs:
 
       - name: List directories in a directory
         run: |
-          echo "Listing directories:"
+          echo "Listing directories: 🚀"
           for dir in $(ls -d */); do
             echo $dir
           done
