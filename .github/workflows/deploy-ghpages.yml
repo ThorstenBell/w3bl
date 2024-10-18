@@ -9,6 +9,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: List directories in a directory
+        run: |
+          echo "Listing directories:"
+          for dir in $(ls -d */); do
+            echo $dir
+          done
 
       # Deploy to local repo
       - name: Deploy
@@ -16,5 +22,5 @@ jobs:
         env:
           REPO: self
           BRANCH: test
-          FOLDER: dist
+          FOLDER: ./dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
