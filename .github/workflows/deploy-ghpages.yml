@@ -32,22 +32,24 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-          # Create a temporary directory
+          # Create a temp directory and copy only dist contents
           mkdir temp-dist
           cp -R dist/* temp-dist/
-
-          # Add CNAME file
           echo "www.w3bl.co.uk" > temp-dist/CNAME
 
-          # Switch to test branch
+          # Switch to test branch (or create it)
           git checkout test || git checkout --orphan test
 
-          # Remove everything and copy build
-          git rm -rf . > /dev/null 2>&1 || true
+          # Clean everything, including previously ignored files
+          git rm -rf . --ignore-unmatch
+          rm -rf *
+
+          # Copy in new files from temp-dist
           cp -r temp-dist/* .
           rm -rf temp-dist
 
-          # Commit and push
+          # Commit and force push
           git add .
           git commit -m "Deploy to test branch from main"
           git push origin test --force
+      
