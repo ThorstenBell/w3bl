@@ -1,4 +1,4 @@
-name: Build and Deploy to Test Branch
+name: Build and Deploy to gh-pages Branch
 run-name: ${{ github.actor }} is deploying code to Github Pages 🚀
 
 on:
@@ -32,15 +32,16 @@ jobs:
           mkdir ../dist-temp
           cp -r dist/* ../dist-temp/
           echo "www.w3bl.co.uk" > ../dist-temp/CNAME
+          touch ../dist-temp/.nojekyll
 
-      - name: Switch to test branch and deploy
+      - name: Switch to gh-pages branch and deploy
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
           # Clean up before switching
           git clean -fdx
-          git checkout test || git checkout --orphan test
+          git checkout gh-pages || git checkout --orphan gh-pages
 
           # Remove all tracked files
           git rm -rf . --ignore-unmatch
@@ -51,5 +52,5 @@ jobs:
 
           # Commit and push
           git add .
-          git commit -m "Deploy to test branch from main"
-          git push origin test --force
+          git commit -m "Deploy to gh-pages branch from main"
+          git push origin gh-pages --force
