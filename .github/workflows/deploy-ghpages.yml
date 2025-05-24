@@ -36,6 +36,9 @@ jobs:
           mkdir temp-dist
           cp -R dist/* temp-dist/
 
+          # Add CNAME file
+          echo "www.w3bl.co.uk" > temp-dist/CNAME
+
           # Switch to test branch
           git checkout test || git checkout --orphan test
 
