@@ -14,12 +14,12 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Needed to push to another branch
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Use your desired Node.js version
+          node-version: 18
 
       - name: Install dependencies
         run: npm ci
@@ -27,29 +27,29 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy dist to test branch
+      - name: Prepare dist for deployment
+        run: |
+          mkdir ../dist-temp
+          cp -r dist/* ../dist-temp/
+          echo "www.w3bl.co.uk" > ../dist-temp/CNAME
+
+      - name: Switch to test branch and deploy
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-          # Create a temp directory and copy only dist contents
-          mkdir temp-dist
-          cp -R dist/* temp-dist/
-          echo "www.w3bl.co.uk" > temp-dist/CNAME
-
-          # Switch to test branch (or create it)
+          # Clean up before switching
+          git clean -fdx
           git checkout test || git checkout --orphan test
 
-          # Clean everything, including previously ignored files
+          # Remove all tracked files
           git rm -rf . --ignore-unmatch
-          rm -rf *
 
-          # Copy in new files from temp-dist
-          cp -r temp-dist/* .
-          rm -rf temp-dist
+          # Copy built files into repo
+          cp -r ../dist-temp/* .
+          rm -rf ../dist-temp
 
-          # Commit and force push
+          # Commit and push
           git add .
           git commit -m "Deploy to test branch from main"
           git push origin test --force
-      
