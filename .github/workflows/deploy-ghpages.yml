@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir ../dist-temp
           cp -r dist/* ../dist-temp/
-          echo "www.w3bl.co.uk" > ../dist-temp/CNAME
+          echo "www.w3bl.com" > ../dist-temp/CNAME
           touch ../dist-temp/.nojekyll
 
       - name: Switch to gh-pages branch and deploy

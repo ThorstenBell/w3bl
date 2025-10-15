@@ -75,7 +75,7 @@ const projects = [
         links: [
             {
                 name: 'Website',
-                link: 'https://heco.w3bl.co.uk/'
+                link: 'https://www.hecoanalytics.com/'
             },
             {
                 name: 'Github',
