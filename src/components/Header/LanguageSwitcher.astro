@@ -1,0 +1,33 @@
+---
+import {getRelativeLocaleUrlList, pathHasLocale} from 'astro:i18n';
+import {$t} from '../../utils/i18n';
+import LanguageItem from "./LanguageItem.astro";
+import Gb from '../../assets/images/gb.svg'
+import Nl from '../../assets/images/nl.svg'
+let currentPath = Astro.url.pathname;
+const hasLocale = pathHasLocale(currentPath);
+if (hasLocale) {
+    currentPath = "/" + currentPath.split("/").filter((part, i) => part && i !== 1).join("/");
+}
+const localeList = getRelativeLocaleUrlList(currentPath);
+---
+<button type="button" data-dropdown-toggle="language-dropdown-menu"
+        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+    <span class="w-4.5 h-4.5 mr-2 overflow-hidden rounded-full">
+        {Astro.currentLocale === 'en' &&
+                <Gb class="w-4.5 h-4.5"/>}
+        {Astro.currentLocale === 'nl' &&
+                <Nl class="w-4.5 h-4.5"/>}
+            </span>
+    {Astro.currentLocale === 'en' &&
+        $t('English', Astro.currentLocale)}
+    {Astro.currentLocale === 'nl' &&
+        $t('Dutch', Astro.currentLocale)}
+</button>
+<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700"
+     id="language-dropdown-menu">
+    <ul class="py-2 font-medium" role="none">
+        {localeList.map((locale) =>
+                <LanguageItem href={locale}/>)}
+    </ul>
+</div>

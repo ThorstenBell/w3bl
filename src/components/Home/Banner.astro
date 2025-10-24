@@ -1,0 +1,25 @@
+---
+import {Content as EnContent} from '../../content/home/en/banner.md';
+import {Content as NlContent} from '../../content/home/nl/banner.md'
+import { $t } from '../../utils/i18n';
+const currentLocale = Astro.currentLocale ?? 'en';
+---
+<section class="bg-white dark:bg-gray-900 relative">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative
+    [&_p]:mb-8 [&_p]:text-lg [&_p]:font-normal [&_p]:text-gray-500 lg:[&_p]:text-xl sm:[&_p]:px-16 lg:[&_p]:px-48 dark:[&_p]:text-gray-400
+    [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-bold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:text-gray-900 md:[&_h1]:text-5xl lg:[&_h1]:text-6xl dark:[&_h1]:text-white
+    ">
+        <div class="inline-flex justify-between items-center py-1 px-2 mb-3 text-sm font-medium text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+            Thorsten Bell
+        </div>
+        { currentLocale === 'nl' ? <NlContent /> : <EnContent />}
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+            <a href="#contact" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                {$t('Get in touch', currentLocale)}
+                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>

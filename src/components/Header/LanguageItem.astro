@@ -1,0 +1,26 @@
+---
+import Gb from '../../assets/images/gb.svg'
+import Nl from '../../assets/images/nl.svg'
+import {$t} from '../../utils/i18n';
+const {href} = Astro.props;
+const locale = href.split("/")[1];
+---
+
+<li>
+    <a href={href}
+       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+       role="menuitem">
+        <div class="inline-flex items-center">
+            <span class="w-4.5 h-4.5 mr-2 overflow-hidden rounded-full">
+                {!locale &&
+                        <Gb class="w-4.5 h-4.5"/>}
+                {locale === 'nl' &&
+                        <Nl class="w-4.5 h-4.5"/>}
+            </span>
+            {!locale &&
+                    $t('English', Astro.currentLocale)}
+            {locale === 'nl' &&
+                    $t("Dutch", Astro.currentLocale)}
+        </div>
+    </a>
+</li>

@@ -1,0 +1,81 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import {pathHasLocale, getAbsoluteLocaleUrl} from "astro:i18n";
+import ContactForm from "../components/ContactForm.astro";
+const {pageTitle, pageDescription} = Astro.props;
+const currentLocale = Astro.currentLocale ?? 'en';
+
+let currentPath = Astro.url.pathname;
+const hasLocale = pathHasLocale(currentPath);
+if (hasLocale) {
+    currentPath = "/" + currentPath.split("/").filter((part, i) => part && i !== 1).join("/");
+}
+
+const enUrl = getAbsoluteLocaleUrl('en', currentPath);
+const nlUrl = getAbsoluteLocaleUrl('nl', currentPath);
+---
+<html lang={currentLocale}>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical: self-referencing -->
+    <link rel="canonical" href={currentLocale === 'en' ? enUrl : nlUrl}/>
+
+    <!-- hreflang tags -->
+    <link rel="alternate" hreflang="en" href={enUrl}/>
+    <link rel="alternate" hreflang="nl" href={nlUrl}/>
+    <link rel="alternate" hreflang="x-default" href={enUrl}/>
+
+    <meta name="generator" content={Astro.generator}/>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription}/>
+    <meta name="keywords"
+          content="freelance web developer, web designer, graphic designer, custom websites, SEO-friendly websites, responsive web design">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content={pageTitle}>
+    <meta property="og:description"
+          content={pageDescription}>
+    <meta property="og:url" content="https://w3bl.com/">
+    <meta property="og:image" content=/og.png">
+    <meta property="og:site_name" content="Thorsten Bell | Freelance Web Developer & Graphic Designer">
+
+    {currentLocale === 'en' && <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Person",
+            "name": "Thorsten Bell",
+            "jobTitle": "Freelance Web Developer & Graphic Designer",
+            "url": "https://w3bl.com",
+            "description": "I help businesses grow online with custom web design, branding, and modern web development."
+        }
+    </script>}
+    {currentLocale === 'nl' && <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Person",
+            "name": "Thorsten Bell",
+            "jobTitle": "Freelance webontwikkelaar en grafisch ontwerper",
+            "url": "https://w3bl.com",
+            "description": "Ik help bedrijven online groeien met webdesign op maat, branding en moderne webontwikkeling."
+        }
+    </script>}
+
+</head>
+<body>
+<header>
+    <Header/>
+</header>
+<main>
+    <slot/>
+    <ContactForm/>
+</main>
+<Footer/>
+<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

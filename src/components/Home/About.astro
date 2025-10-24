@@ -1,0 +1,22 @@
+---
+import {Content as EnContent} from '../../content/home/en/about.md';
+import {Content as NlContent} from '../../content/home/nl/about.md';
+import {Picture} from "astro:assets";
+import ThorstenBell from "../../assets/images/ThorstenBell.jpg";
+const currentLocale = Astro.currentLocale ?? 'en';
+import {$t} from '../../utils/i18n';
+---
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid sm:grid-cols-6">
+        <div class="sm:col-span-4 [&_p]:mb-8 [&_p]:text-lg [&_p]:font-normal [&_p]:text-gray-600 dark:[&_p]:text-gray-400 lg:[&_p]:text-xl sm:px-16 lg:px-48">
+            <h2 class="mb-4 text-2xl font-bold leading-none tracking-tight dark:text-white md:text-3xl xl:text-4xl">{$t('About me', currentLocale)}</h2>
+            {currentLocale === 'nl' ?
+                    <NlContent/> :
+                    <EnContent/>}
+        </div>
+        <div class="flex sm:col-span-2 justify-center sm:justify-start">
+            <Picture class="mx-auto max-w-xs w-full h-auto aspect-square object-cover object-center rounded-lg" src={ThorstenBell} formats={['avif', 'webp']} alt="Thorsten Bell"/>
+        </div>
+    </div>
+</section>
