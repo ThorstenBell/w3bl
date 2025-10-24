@@ -1,0 +1,51 @@
+---
+import {Content as EnContent1} from '../../content/home/en/services1.md';
+import {Content as NlContent1} from '../../content/home/nl/services1.md';
+import {Content as EnContent2} from '../../content/home/en/services2.md';
+import {Content as NlContent2} from '../../content/home/nl/services2.md';
+import {Content as EnContent3} from '../../content/home/en/services3.md';
+import {Content as NlContent3} from '../../content/home/nl/services3.md';
+
+const currentLocale = Astro.currentLocale ?? 'en';
+---
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+        <h2 class="sr-only">Services</h2>
+        <div class="grid md:grid-cols-3 gap-8
+        [&_h3]:text-gray-900 dark:[&_h3]:text-white [&_h3]:text-3xl [&_h3]:font-bold [&_h3]:mb-0
+        [&_h4]:text-base [&_h4]:text-gray-500 dark:[&_h4]:text-gray-400 [&_h4]:font-bold [&_h4]:mb-0
+        [&_p]:text-base [&_p]:font-normal [&_p]:text-gray-500 dark:[&_p]:text-gray-400
+        [&_ul]:list-disc [&_ul]:pl-5
+        [&_li]:text-base [&_li]:font-normal [&_li]:text-gray-500 dark:[&_li]:text-gray-400
+        ">
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 flex flex-col gap-4">
+                <div class="w-fit bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+                    </svg>
+                    Code
+                </div>
+                { currentLocale === 'nl' ? <NlContent1 /> : <EnContent1 />}
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 flex flex-col gap-4">
+                <div class="w-fit bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                        <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
+                    </svg>
+                    Design
+                </div>
+                { currentLocale === 'nl' ? <NlContent2 /> : <EnContent2 />}
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 flex flex-col gap-4">
+                <div class="w-fit bg-orange-100 text-orange-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" clip-rule="evenodd"/>
+                    </svg>
+                    Support
+                </div>
+                { currentLocale === 'nl' ? <NlContent3 /> : <EnContent3 />}
+            </div>
+        </div>
+    </div>
+</section>
