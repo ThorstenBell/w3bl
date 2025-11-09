@@ -12,6 +12,6 @@ I create custom websites that reflect your brand and deliver measurable results.
 - Front-end development (HTML, CSS, JavaScript, Vue, React)
 - CMS development (WordPress, Magento, Laravel, or headless setups)
 - Website redesigns and optimization
-- Landing pages and sales funnels
+- Landing pages
 
 Your site will be modern, fast, secure, and easy to manage — built to grow with your business.

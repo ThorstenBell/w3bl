@@ -2,7 +2,6 @@
 title: Banner
 ---
 
-# Webontwikkeling en grafisch ontwerp
+# Webontwikkeling & <br/>grafisch ontwerp
 
-Ik ben een freelance webontwikkelaar en -ontwerper die bedrijven helpt groeien door middel van opvallend grafisch ontwerp
-en gebruiksvriendelijke websites en webapplicaties.
+Ik ben een freelance webontwikkelaar en -ontwerper die bedrijven en organisaties helpt groeien door middel van opvallend grafisch ontwerp en gebruiksvriendelijke websites en webapplicaties.
