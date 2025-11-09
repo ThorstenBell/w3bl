@@ -4,7 +4,7 @@ title: Services - Grafisch ontwerp & branding
 
 ### Grafisch ontwerp & branding
 
-Uw visuele identiteit bepaalt hoe klanten jouw merk waarnemen. Ik ontwerp strakke, indrukwekkende beelden die uw verhaal vertellen en uw bedrijf memorabel maken.
+Jouw visuele identiteit bepaalt hoe klanten jouw merk waarnemen. Ik ontwerp strakke, indrukwekkende beelden die jouw verhaal vertellen en die een blijvende indruk achterlaten.
 
 #### Ontwerpdiensten omvatten:
 
@@ -14,4 +14,4 @@ Uw visuele identiteit bepaalt hoe klanten jouw merk waarnemen. Ik ontwerp strakk
 - Webbanners en advertenties
 - UI/UX-ontwerp voor websites en apps
 
-Consistentie in al jouw merkmaterialen helpt je bij het opbouwen van herkenbaarheid en vertrouwen, zowel online als offline.
+Consistentie in alle merkmaterialen helpt je bij het opbouwen van herkenbaarheid en vertrouwen, zowel online als offline.

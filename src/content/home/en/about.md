@@ -9,6 +9,6 @@ Whether you’re a small business owner, startup founder, or creative profession
 great — they get results. My goal is to build your online presence around what matters most: your brand, your goals, and
 your audience.
 
-With a strong background in modern front-end development and graphic design, I handle every stage of your online
-presence — from concept and layout to launch and optimization. That means you get cohesive, consistent design and
-functionality, all from one dedicated professional.
+With a strong background in modern front-end development and graphic design, I manage every stage of your online
+presence — from concept and layout to launch and optimization. This ensures cohesive, consistent design and
+deliverables, all from one dedicated professional.
