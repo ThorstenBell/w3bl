@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import {pathHasLocale, getAbsoluteLocaleUrl} from "astro:i18n";
 import ContactForm from "../components/ContactForm.astro";
+import Testimonial from "../components/Home/Testimonial.astro";
 const {pageTitle, pageDescription} = Astro.props;
 const currentLocale = Astro.currentLocale ?? 'en';
 
@@ -78,6 +79,7 @@ const nlUrl = getAbsoluteLocaleUrl('nl', currentPath);
 <Header/>
 <main>
     <slot/>
+    <Testimonial />
     <ContactForm/>
 </main>
 <Footer/>
