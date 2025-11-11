@@ -5,3 +5,25 @@
 @import "flowbite/src/themes/default.css";
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
+
+@font-face {
+    font-family: 'chaneyultra_extended';
+    src: url('../assets/fonts/chaney-ultraextended-webfont.eot');
+    src: url('../assets/fonts/chaney-ultraextended-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/chaney-ultraextended-webfont.woff2') format('woff2'),
+    url('../assets/fonts/chaney-ultraextended-webfont.woff') format('woff'),
+    url('../assets/fonts/chaney-ultraextended-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Todo: Get Web font Chaney */
+h1, h2, h3, h4, h5, h6 {
+    font-family: CHANEY, Helvetica, sans-serif;
+    @apply font-normal tracking-wide;
+
+    span {
+        font-family: chaneyultra_extended, Helvetica, sans-serif;
+    }
+}
