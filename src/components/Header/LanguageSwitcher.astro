@@ -26,7 +26,7 @@ const localeList = getRelativeLocaleUrlList(currentPath);
 </button>
 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700"
      id="language-dropdown-menu">
-    <ul class="py-2 font-medium" role="none">
+    <ul class="py-2 font-medium" role="menu" aria-orientation="vertical" aria-label={$t('Language menu', Astro.currentLocale)}>
         {localeList.map((locale) =>
                 <LanguageItem href={locale}/>)}
     </ul>
