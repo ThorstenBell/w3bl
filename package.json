@@ -12,8 +12,8 @@
     "@sanity/astro": "^3.2.10",
     "@sanity/client": "^7.13.2",
     "@tailwindcss/vite": "^4.1.14",
-    "astro": "^7.3.1",
     "astro-portabletext": "^0.12.0",
+    "astro": "^7.4.5",
     "flowbite": "^3.1.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
@@ -21,5 +21,9 @@
     "sanity": "^4.21.1",
     "styled-components": "^6.1.19",
     "tailwindcss": "^4.1.14"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true,
+    "esbuild": true
   }
 }

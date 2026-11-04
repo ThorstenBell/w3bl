@@ -34,10 +34,21 @@ const currentLocale = Astro.currentLocale ?? 'en';
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
-        <div class="flex gap-1 flex-col-reverse sm:flex-row items-center sm:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {year} W3BL
+        <div class="gap-4 flex flex-col-reverse items-center sm:grid sm:grid-cols-3">
+            <a href="https://www.simpleanalytics.com?referral=pufud&utm_source=w3bl.com&utm_content=badge" referrerpolicy="origin" target="_blank">
+                <img
+                        src="https://simpleanalyticsbadges.com/w3bl.com?background=transparent&text=677779&logo=677779&border=677779&radius=3&border-width=1&counter=false"
+                        width="210"
+                        height="50"
+                        alt="Simple Analytics"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                        crossorigin="anonymous"
+                />
+            </a>
+            <span class="text-sm w-full text-gray-500 text-center dark:text-gray-400">© {year} W3BL
             </span>
-            <div class="text-sm text-gray-500 text-center dark:text-gray-400 flex gap-1 flex-col sm:flex-row">
+            <div class="text-sm text-gray-500 text-center dark:text-gray-400 flex gap-1 flex-col sm:text-right">
                 <span class="block">KvK: <strong>98605003</strong></span>
                 <span class="block">BTW: <strong>NL005342447B77</strong></span>
             </div>
