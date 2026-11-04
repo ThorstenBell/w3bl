@@ -1,0 +1,49 @@
+---
+import { Picture } from 'astro:assets';
+import portrait from '../../assets/images/ThorstenBell.jpg';
+import richard from '../../assets/images/RichardStunt.jpg';
+import { type Lang, t } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = t(lang);
+---
+<section aria-label={c.testimonial.label} class="container-site pb-28">
+  <figure class="max-w-[980px]">
+    <blockquote lang="en">
+      <p class="text-[clamp(1.375rem,2.4vw,2rem)] font-medium leading-[1.35] tracking-[-0.005em]">“{c.testimonial.quote}”</p>
+    </blockquote>
+    <figcaption class="mt-6 flex items-center gap-3.5 text-base">
+      <Picture src={richard} formats={['avif', 'webp']} widths={[88]} sizes="44px" alt="" class="size-11 rounded-full object-cover" />
+      <span><strong class="font-semibold">{c.testimonial.name}</strong><br /><span class="text-muted">{c.testimonial.company}</span></span>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="about" class="border-t border-line">
+  <div class="container-site flex flex-wrap items-center gap-x-18 gap-y-12 py-26">
+    <div class="w-full max-w-[360px] flex-[0_1_360px]">
+      <Picture
+        src={portrait}
+        formats={['avif', 'webp']}
+        widths={[360, 720]}
+        sizes="(min-width: 640px) 360px, 90vw"
+        alt={c.about.portraitAlt}
+        class="block aspect-square w-full rounded-[32px] object-cover"
+      />
+    </div>
+    <div class="min-w-0 flex-[1_1_480px]">
+      <h2 class="heading-display text-[clamp(1.4rem,3.2vw,2.75rem)]">{c.about.title}</h2>
+      {c.about.paragraphs.map((p, i) => (
+        <p class:list={['max-w-[620px] text-xl text-body', i === 0 ? 'mt-6' : 'mt-4']}>{p}</p>
+      ))}
+      <div class="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-[17px] font-semibold">
+        <a href="https://www.malt.com/profile/thorstenbell" class="link link-primary">{c.about.malt}</a>
+        <a href="https://www.linkedin.com/company/w3bl" class="link link-primary">LinkedIn</a>
+        <a href="https://github.com/ThorstenBell" class="link link-primary">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>

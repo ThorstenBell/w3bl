@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n';
+const c = t('en').notFound;
+---
+<BaseLayout lang="en" path="/404/" title={`${c.title} | W3BL`} description={c.text}>
+  <section class="container-site py-32">
+    <h1 class="heading-display text-[clamp(1.5rem,5vw,4rem)]">404</h1>
+    <p class="mt-6 text-2xl font-semibold">{c.title}</p>
+    <p class="mt-2 text-body">{c.text}</p>
+    <a href="/" class="btn btn-primary mt-8 rounded-full px-6">{c.home}</a>
+  </section>
+</BaseLayout>

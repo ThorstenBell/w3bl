@@ -1,7 +1,94 @@
-/* Tailwind */
 @import "tailwindcss";
+@import "@fontsource/instrument-sans/400.css";
+@import "@fontsource/instrument-sans/500.css";
+@import "@fontsource/instrument-sans/600.css";
 
-/* Flowbite */
-@import "flowbite/src/themes/default.css";
-@plugin "flowbite/plugin";
-@source "../../node_modules/flowbite";
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* W3BL theme: cool paper, navy ink, W3BL blue */
+@plugin "daisyui/theme" {
+  name: "w3bl";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #EEF1F5;
+  --color-base-200: #FFFFFF;
+  --color-base-300: #CDD3DF;
+  --color-base-content: #121A33;
+  --color-primary: #2234C9;
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #121A33;
+  --color-secondary-content: #FFFFFF;
+  --color-accent: #9FB0FF;
+  --color-accent-content: #121A33;
+  --color-neutral: #121A33;
+  --color-neutral-content: #EEF1F5;
+  --color-info: #2234C9;
+  --color-info-content: #FFFFFF;
+  --color-success: #1F9D57;
+  --color-success-content: #FFFFFF;
+  --color-warning: #E0702E;
+  --color-warning-content: #121A33;
+  --color-error: #B4321F;
+  --color-error-content: #FFFFFF;
+  --radius-selector: 2rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@font-face {
+  font-family: "Chaney";
+  src: url("../assets/fonts/chaney-ultraextended-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Chaney", "Instrument Sans", ui-sans-serif, sans-serif;
+  --color-ink: #121A33;
+  --color-ink-2: #1B2443;
+  --color-body: #3A4360;
+  --color-muted: #5B647D;
+  --color-line: #CDD3DF;
+  --color-on-ink: #D3D9E8;
+  --color-on-ink-muted: #B7BFD3;
+  --color-panel: #F7F8FB;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-base-100 text-base-content font-sans text-lg leading-relaxed antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+  .heading-display {
+    @apply font-display font-normal leading-[1.1] [overflow-wrap:anywhere];
+  }
+}

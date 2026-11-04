@@ -1,0 +1,49 @@
+---
+import { type Lang, t } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = t(lang).contact;
+---
+<section id="contact" class="bg-primary text-primary-content">
+  <div class="container-site flex flex-wrap gap-x-20 gap-y-12 py-26">
+    <div class="min-w-0 flex-[1_1_380px]">
+      <h2 class="heading-display text-[clamp(1.3rem,3.4vw,3rem)]">{c.title}</h2>
+      <p class="mt-6 max-w-[460px] text-xl text-[#E6E9FF]">{c.text}</p>
+      <p class="mt-7 text-lg"><a href="mailto:thorsten@w3bl.com" class="font-semibold text-white underline underline-offset-4">thorsten@w3bl.com</a></p>
+    </div>
+
+    <form
+      class="flex min-w-0 flex-[1_1_480px] flex-col gap-[18px]"
+      id="contact-form"
+      name="contact-form"
+      action="https://formkeep.com/f/41adcee5ca3b"
+      accept-charset="UTF-8"
+      enctype="multipart/form-data"
+      method="post"
+    >
+      <div class="flex flex-wrap gap-[18px]">
+        <label class="flex flex-[1_1_200px] flex-col gap-2 text-[15px] font-medium" for="contact-name">
+          {c.name}
+          <input id="contact-name" name="Name" type="text" autocomplete="name" class="input input-lg w-full rounded-xl border-0 bg-white text-ink" />
+        </label>
+        <label class="flex flex-[1_1_200px] flex-col gap-2 text-[15px] font-medium" for="contact-email">
+          <span>{c.email} <span class="sr-only">({c.required})</span><span aria-hidden="true">*</span></span>
+          <input id="contact-email" name="Email" type="email" autocomplete="email" required class="input input-lg w-full rounded-xl border-0 bg-white text-ink" />
+        </label>
+      </div>
+      <label class="flex flex-col gap-2 text-[15px] font-medium" for="contact-message">
+        <span>{c.message} <span class="sr-only">({c.required})</span><span aria-hidden="true">*</span></span>
+        <textarea id="contact-message" name="Message" rows="5" required class="textarea textarea-lg w-full rounded-xl border-0 bg-white text-ink"></textarea>
+      </label>
+      <!-- Honeypot for FormKeep spam filtering -->
+      <div class="absolute -left-[5000px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+        <label for="email_subscribe_41adcee5ca3b_49467">Subscribe</label>
+        <input name="subscribe_41adcee5ca3b_49467" value="" tabindex="-1" autocomplete="off" type="email" id="email_subscribe_41adcee5ca3b_49467" />
+      </div>
+      <button type="submit" class="btn btn-secondary btn-lg self-start rounded-full px-7 text-[17px] font-semibold">{c.submit}</button>
+    </form>
+  </div>
+</section>

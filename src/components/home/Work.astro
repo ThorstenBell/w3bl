@@ -1,0 +1,95 @@
+---
+import { Picture } from 'astro:assets';
+import AgentMock from '../mocks/AgentMock.astro';
+import CePlaneMock from '../mocks/CePlaneMock.astro';
+import PhoneMock from '../mocks/PhoneMock.astro';
+import hecoSite from '../../assets/images/heco/heco-site.jpg';
+import rds from '../../assets/images/rds/rds5.jpg';
+import meroe from '../../assets/images/meroe/meroe1.jpg';
+import walas from '../../assets/images/walas/walas4.jpg';
+import livingData from '../../assets/images/data/data1.jpg';
+import { type Lang, localePath, t } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const w = t(lang).work;
+const designImages = { rds, meroe, walas, data: livingData } as const;
+const caseUrl = localePath(lang, '/work/hecoagent/');
+---
+<section id="work" class="bg-ink text-base-100">
+  <div class="container-site pt-26 pb-28">
+    <div class="mb-12 flex flex-wrap items-end justify-between gap-4">
+      <h2 class="heading-display text-[clamp(1.4rem,3.2vw,2.75rem)]">{w.title}</h2>
+      <p class="max-w-[460px] text-[17px] text-on-ink-muted">{w.intro}</p>
+    </div>
+
+    <article class="flex flex-wrap items-center gap-x-14 gap-y-10 rounded-[28px] bg-ink-2 p-6 sm:p-10">
+      <div class="min-w-0 flex-[1_1_360px]">
+        <p class="mb-3.5 text-[15px] text-accent">{w.agent.kicker}</p>
+        <h3 class="text-[40px] font-semibold leading-tight text-white">{w.agent.title}</h3>
+        <p class="mt-4 max-w-[520px] text-[19px] text-on-ink">{w.agent.text}</p>
+        <p class="mt-5 text-[15px] text-on-ink-muted">{w.agent.stack}</p>
+        <a href={caseUrl} class="mt-7 inline-block font-semibold text-white underline underline-offset-[5px] hover:text-accent">{w.agent.link}</a>
+      </div>
+      <div class="min-w-0 flex-[1_1_480px]" aria-hidden="true">
+        <AgentMock lang={lang} />
+      </div>
+    </article>
+
+    <div class="mt-6 grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] gap-6">
+      <article class="flex flex-col gap-[18px] rounded-[28px] bg-ink-2 p-7">
+        <CePlaneMock label={w.sim.chart} />
+        <div>
+          <p class="mb-2 text-[15px] text-accent">{w.sim.kicker}</p>
+          <h3 class="text-[26px] font-semibold text-white">{w.sim.title}</h3>
+          <p class="mt-2.5 text-[17px] text-on-ink">{w.sim.text}</p>
+          <p class="mt-3.5 text-[15px] text-on-ink-muted">{w.sim.stack}</p>
+        </div>
+      </article>
+      <article class="flex flex-col gap-[18px] rounded-[28px] bg-ink-2 p-7">
+        <Picture
+          src={hecoSite}
+          formats={['avif', 'webp']}
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 90vw"
+          alt={w.site.alt}
+          class="block aspect-[4/3] w-full rounded-2xl object-cover"
+        />
+        <div>
+          <p class="mb-2 text-[15px] text-accent">{w.site.kicker}</p>
+          <h3 class="text-[26px] font-semibold text-white">{w.site.title}</h3>
+          <p class="mt-2.5 text-[17px] text-on-ink">{w.site.text}</p>
+          <p class="mt-3.5 text-[15px] text-on-ink-muted">{w.site.stack}</p>
+        </div>
+      </article>
+      <article class="flex flex-col gap-[18px] rounded-[28px] bg-ink-2 p-7">
+        <PhoneMock lang={lang} />
+        <div>
+          <p class="mb-2 text-[15px] text-accent">{w.metrix.kicker}</p>
+          <h3 class="text-[26px] font-semibold text-white">{w.metrix.title}</h3>
+          <p class="mt-2.5 text-[17px] text-on-ink">{w.metrix.text}</p>
+          <p class="mt-3.5 text-[15px] text-on-ink-muted">{w.metrix.stack}</p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="mt-22 mb-6 text-[22px] font-semibold text-white">{w.designTitle}</h3>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-5">
+      {w.design.map((item) => (
+        <figure>
+          <Picture
+            src={designImages[item.key as keyof typeof designImages]}
+            formats={['avif', 'webp']}
+            widths={[400, 800]}
+            sizes="(min-width: 1280px) 290px, (min-width: 640px) 45vw, 90vw"
+            alt={item.alt}
+            class="block aspect-[4/3] w-full rounded-2xl object-cover"
+          />
+          <figcaption class="mt-3 text-base text-on-ink">{item.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

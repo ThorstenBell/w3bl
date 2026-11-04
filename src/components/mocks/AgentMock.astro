@@ -1,0 +1,47 @@
+---
+import { type Lang, t } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  /** "compact" for the home page card, "full" for the case page */
+  variant?: 'compact' | 'full';
+}
+const { lang, variant = 'compact' } = Astro.props;
+const m = t(lang).mock;
+const full = variant === 'full';
+const bars = full ? ['94%', '88%', '91%', '54%'] : ['92%', '84%', '66%'];
+---
+<div class:list={['flex overflow-hidden rounded-[18px] bg-panel text-ink', full ? 'min-h-[520px] flex-wrap text-[15px]' : 'flex-col text-sm']}>
+  {full && (
+    <div class="flex max-w-[280px] flex-[1_1_220px] flex-col gap-2.5 border-r border-[#DDE2EC] bg-white p-5">
+      <p class="mb-1.5 font-semibold">{m.agentDocs}</p>
+      {m.agentDocList.map((doc, i) => (
+        <div class:list={['rounded-[10px] px-3 py-2.5', i === 0 ? 'bg-[#E6E9FB]' : 'bg-base-100']}>{doc}</div>
+      ))}
+      <p class="mt-4 text-[13px] text-[#1F7A47]">{m.agentServer}</p>
+    </div>
+  )}
+  <div class:list={['flex min-w-0 flex-col', full && 'flex-[3_1_420px] gap-[18px] p-7']}>
+    {!full && (
+      <div class="flex items-center justify-between border-b border-[#DDE2EC] px-[18px] py-3.5">
+        <span class="font-semibold">HecoAgent</span>
+        <span class="badge badge-sm rounded-full border-0 bg-[#DDF1E5] text-[#1F7A47]">{m.agentStatus}</span>
+      </div>
+    )}
+    <div class:list={['flex flex-col gap-3.5', !full && 'px-[18px] py-5']}>
+      <div class="max-w-[78%] self-end rounded-[14px_14px_4px_14px] bg-primary px-3.5 py-2.5 text-white">{m.agentQuestion}</div>
+      <div class="flex max-w-[86%] flex-col gap-2 rounded-[14px_14px_14px_4px] border border-[#DDE2EC] bg-white p-3.5">
+        {bars.map((w) => <div class="h-[9px] rounded bg-[#D7DCE7]" style={`width:${w}`}></div>)}
+        <div class="mt-1.5 flex flex-wrap gap-1.5">
+          {m.agentSources.map((s) => <span class="rounded-md bg-base-100 px-2.5 py-0.5 text-xs">{s}</span>)}
+        </div>
+      </div>
+    </div>
+    <div class:list={['flex gap-2.5', full ? 'mt-auto' : 'px-[18px] pb-[18px]']}>
+      <div class="flex-1 rounded-full border border-line bg-white px-4 py-3 text-muted">{m.agentInput}</div>
+      <div class="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg>
+      </div>
+    </div>
+  </div>
+</div>

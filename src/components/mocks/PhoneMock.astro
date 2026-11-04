@@ -1,0 +1,23 @@
+---
+import { type Lang, t } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const m = t(lang).mock;
+const rows = [
+  ['Back squat', '5 × 5'],
+  ['Bench press', '4 × 6'],
+  ['Sled push', '6 × 20 m'],
+];
+---
+<div class="flex h-[216px] justify-center overflow-hidden rounded-2xl bg-primary pt-5" aria-hidden="true">
+  <div class="flex w-[168px] flex-col gap-2 rounded-t-3xl border-[6px] border-b-0 border-ink bg-white px-3 py-4 text-[11px] text-ink">
+    <p class="text-[13px] font-semibold">{m.phoneTitle}</p>
+    {rows.map(([name, sets]) => (
+      <div class="flex justify-between rounded-lg bg-base-100 px-2 py-1.5"><span>{name}</span><span>{sets}</span></div>
+    ))}
+    <div class="rounded-lg bg-ink py-1.5 text-center text-white">{m.phoneLog}</div>
+  </div>
+</div>
