@@ -1,0 +1,53 @@
+---
+import type {PageBlock} from '../types/blocks';
+import Hero from './blocks/Hero.astro';
+import ProofStrip from './blocks/ProofStrip.astro';
+import TeaserGrid from './blocks/TeaserGrid.astro';
+import CaseHighlightStrip from './blocks/CaseHighlightStrip.astro';
+import AboutSummary from './blocks/AboutSummary.astro';
+import CtaBanner from './blocks/CtaBanner.astro';
+import ProblemStatement from './blocks/ProblemStatement.astro';
+import BuildingInPublicList from './blocks/BuildingInPublicList.astro';
+import FeatureHighlight from './blocks/FeatureHighlight.astro';
+import CaseStudyHeader from './blocks/CaseStudyHeader.astro';
+import CaseStudyBody from './blocks/CaseStudyBody.astro';
+import CaseStudyResults from './blocks/CaseStudyResults.astro';
+import CaseStudyGallery from './blocks/CaseStudyGallery.astro';
+import NextCaseNav from './blocks/NextCaseNav.astro';
+import ContactForm from './blocks/ContactForm.astro';
+
+// Adding a new block type: create its Astro component, then add one line here.
+const BLOCK_COMPONENTS = {
+  hero: Hero,
+  proofStrip: ProofStrip,
+  teaserGrid: TeaserGrid,
+  caseHighlightStrip: CaseHighlightStrip,
+  aboutSummary: AboutSummary,
+  ctaBanner: CtaBanner,
+  problemStatement: ProblemStatement,
+  buildingInPublicList: BuildingInPublicList,
+  featureHighlight: FeatureHighlight,
+  caseStudyHeader: CaseStudyHeader,
+  caseStudyBody: CaseStudyBody,
+  caseStudyResults: CaseStudyResults,
+  caseStudyGallery: CaseStudyGallery,
+  nextCaseNav: NextCaseNav,
+  contactForm: ContactForm,
+} as const;
+
+interface Props {
+  blocks?: PageBlock[];
+}
+
+const {blocks = []} = Astro.props;
+---
+
+{
+  blocks.map((block) => {
+    const Component = BLOCK_COMPONENTS[block._type];
+    if (!Component) {
+      return null;
+    }
+    return <Component {...(block as any)} />;
+  })
+}

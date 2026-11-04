@@ -1,0 +1,10 @@
+---
+import type {CtaBannerBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = CtaBannerBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="ctaBanner" data={block} />

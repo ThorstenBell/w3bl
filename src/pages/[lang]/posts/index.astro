@@ -1,0 +1,44 @@
+---
+import type {SanityDocument} from "@sanity/client";
+import {sanityClient} from "sanity:client";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {$t} from "../../../utils/i18n";
+
+export async function getStaticPaths() {
+    // Define the languages you support
+    const languages = ['en', 'nl']; // Add all your supported languages
+
+    return languages.map((lang) => ({
+        params: { lang }
+    }));
+}
+
+const {lang} = Astro.params;
+
+const POSTS_QUERY = `*[
+  _type == "post"
+  && language == "${lang}"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+
+const posts = await sanityClient.fetch<SanityDocument[]>(POSTS_QUERY);
+
+const pageTitle = $t("SEO-Friendly Web Developer & Graphic Designer | Fast, Responsive Websites", lang);
+const pageDescription = $t("I'm a web developer and graphic designer based in the Netherlands. I specialize in creating fast, responsive websites and web applications.", lang);
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <section class="py-8 px-4 mx-auto max-w-7xl lg:py-16">
+        <h1 class="text-4xl font-bold mb-8">Posts</h1>
+        <ul class="flex flex-col gap-y-4">
+            {posts.map((post) => (
+                    <li class="hover:underline">
+                        <a href={`/${lang}/posts/${post.slug.current}`}>
+                            <h2 class="text-xl font-semibold">{post.title}</h2>
+                            <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+                        </a>
+                    </li>
+            ))}
+        </ul>
+    </section>
+</BaseLayout>

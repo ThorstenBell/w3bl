@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/BlockRenderer.astro';
+import {getPageBySlug} from '../lib/pages';
+
+const page = await getPageBySlug('health-tech');
+
+const pageTitle = page?.title ?? 'Health Tech | Thorsten Bell';
+const pageDescription = 'Web development for health tech products.';
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <BlockRenderer blocks={page?.blocks} />
+</BaseLayout>

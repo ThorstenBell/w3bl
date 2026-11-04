@@ -1,0 +1,10 @@
+---
+import type {AboutSummaryBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = AboutSummaryBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="aboutSummary" data={block} />

@@ -2,8 +2,7 @@
 import Gb from '../../assets/images/gb.svg'
 import Nl from '../../assets/images/nl.svg'
 import {$t} from '../../utils/i18n';
-const {href} = Astro.props;
-const locale = href.split("/")[1];
+const {href, locale} = Astro.props;
 ---
 
 <li>
@@ -12,15 +11,11 @@ const locale = href.split("/")[1];
        role="menuitem">
         <div class="inline-flex items-center">
             <span class="w-4.5 h-4.5 mr-2 overflow-hidden rounded-full">
-                {!locale &&
-                        <Gb class="w-4.5 h-4.5"/>}
-                {locale === 'nl' &&
-                        <Nl class="w-4.5 h-4.5"/>}
+                {locale === 'en' && <Gb class="w-4.5 h-4.5"/>}
+                {locale === 'nl' && <Nl class="w-4.5 h-4.5"/>}
             </span>
-            {!locale &&
-                    $t('English', Astro.currentLocale)}
-            {locale === 'nl' &&
-                    $t("Dutch", Astro.currentLocale)}
+            {locale === 'en' && $t('English', Astro.currentLocale)}
+            {locale === 'nl' && $t("Dutch", Astro.currentLocale)}
         </div>
     </a>
 </li>

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlockRenderer from '../../components/BlockRenderer.astro';
+import {getPageBySlug} from '../../lib/pages';
+
+const page = await getPageBySlug('cases');
+
+const pageTitle = page?.title ?? 'Case Studies | Thorsten Bell';
+const pageDescription = 'A selection of case studies.';
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <BlockRenderer blocks={page?.blocks} />
+</BaseLayout>

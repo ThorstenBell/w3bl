@@ -1,21 +1,15 @@
 ---
-import {getI18nStaticPaths, $t} from '../utils/i18n';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Banner from "../components/Home/Banner.astro";
-import Services from "../components/Home/Services.astro";
-import Cases from "../components/Home/Cases.astro";
-import About from "../components/Home/About.astro";
+import BlockRenderer from '../components/BlockRenderer.astro';
+import {getPageBySlug} from '../lib/pages';
 
-export const getStaticPaths = getI18nStaticPaths;
+const page = await getPageBySlug('home');
 
-const {lang} = Astro.params;
-
-const pageTitle = $t("SEO-Friendly Web Developer & Graphic Designer | Fast, Responsive Websites", lang);
-const pageDescription = $t("I'm a web developer and graphic designer based in the Netherlands. I specialize in creating fast, responsive websites and web applications.", lang);
+const pageTitle = page?.title ?? 'Thorsten Bell | Freelance Web Developer & Graphic Designer';
+const pageDescription =
+  "I'm a web developer and graphic designer based in the Netherlands. I specialize in creating fast, responsive websites and web applications.";
 ---
+
 <BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-    <Banner/>
-    <Services/>
-    <About />
-    <Cases />
+  <BlockRenderer blocks={page?.blocks} />
 </BaseLayout>

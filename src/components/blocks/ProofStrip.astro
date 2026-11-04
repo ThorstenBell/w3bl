@@ -1,0 +1,10 @@
+---
+import type {ProofStripBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = ProofStripBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="proofStrip" data={block} />

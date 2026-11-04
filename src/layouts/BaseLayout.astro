@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import {pathHasLocale, getAbsoluteLocaleUrl} from "astro:i18n";
+import {pathHasLocale, getAbsoluteLocaleUrl, getRelativeLocaleUrlList} from "astro:i18n";
 import ContactForm from "../components/ContactForm.astro";
 const {pageTitle, pageDescription} = Astro.props;
 const currentLocale = Astro.currentLocale ?? 'en';
@@ -15,6 +15,11 @@ if (hasLocale) {
 
 const enUrl = getAbsoluteLocaleUrl('en', currentPath);
 const nlUrl = getAbsoluteLocaleUrl('nl', currentPath);
+
+const allPaths = getRelativeLocaleUrlList(currentPath);
+const localeList = allPaths.map((path: string) => {
+    return {path: path, locale: pathHasLocale(path) ? path.split("/")[1] : 'en'};
+})
 ---
 <html lang={currentLocale}>
 <head>
@@ -75,10 +80,9 @@ const nlUrl = getAbsoluteLocaleUrl('nl', currentPath);
             "description": "Ik help bedrijven online groeien met webdesign op maat, branding en moderne webontwikkeling."
         }
     </script>}
-
 </head>
 <body>
-<Header/>
+<Header localeList={localeList}/>
 <main>
     <slot/>
     <ContactForm/>

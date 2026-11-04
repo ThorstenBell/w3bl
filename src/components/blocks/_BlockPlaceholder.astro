@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+  data: Record<string, unknown>;
+}
+
+const {name, data} = Astro.props;
+---
+
+<section class="my-4 rounded border border-dashed border-gray-400 p-4 font-mono text-xs">
+  <p class="mb-2 font-bold uppercase tracking-wide text-gray-500">Block: {name}</p>
+  <pre class="overflow-x-auto whitespace-pre-wrap">{JSON.stringify(data, null, 2)}</pre>
+</section>

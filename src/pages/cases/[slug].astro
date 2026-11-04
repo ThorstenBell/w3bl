@@ -1,0 +1,30 @@
+---
+import {sanityClient} from 'sanity:client';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlockRenderer from '../../components/BlockRenderer.astro';
+import {getPageBySlug} from '../../lib/pages';
+
+export async function getStaticPaths() {
+  const CASE_SLUGS_QUERY = `*[
+    _type == "page"
+    && defined(slug.current)
+    && string::startsWith(slug.current, "cases/")
+  ]{"slug": slug.current}`;
+
+  const cases = await sanityClient.fetch<{slug: string}[]>(CASE_SLUGS_QUERY);
+
+  return cases.map((c) => ({
+    params: {slug: c.slug.replace('cases/', '')},
+  }));
+}
+
+const {slug} = Astro.params;
+const page = await getPageBySlug(`cases/${slug}`);
+
+const pageTitle = page?.title ?? 'Case Study | Thorsten Bell';
+const pageDescription = 'Case study.';
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <BlockRenderer blocks={page?.blocks} />
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+import type {HeroBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = HeroBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="hero" data={block} />

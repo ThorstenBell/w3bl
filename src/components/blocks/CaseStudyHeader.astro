@@ -1,0 +1,10 @@
+---
+import type {CaseStudyHeaderBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = CaseStudyHeaderBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="caseStudyHeader" data={block} />

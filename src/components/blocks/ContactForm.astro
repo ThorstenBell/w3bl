@@ -1,0 +1,10 @@
+---
+import type {ContactFormBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = ContactFormBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="contactForm" data={block} />

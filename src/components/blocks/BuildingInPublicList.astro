@@ -1,0 +1,10 @@
+---
+import type {BuildingInPublicListBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = BuildingInPublicListBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="buildingInPublicList" data={block} />

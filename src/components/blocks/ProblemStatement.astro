@@ -1,0 +1,10 @@
+---
+import type {ProblemStatementBlock} from '../../types/blocks';
+import BlockPlaceholder from './_BlockPlaceholder.astro';
+
+type Props = ProblemStatementBlock;
+
+const block = Astro.props;
+---
+
+<BlockPlaceholder name="problemStatement" data={block} />
