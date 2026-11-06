@@ -55,7 +55,7 @@ const caseUrl = localePath(lang, '/work/hecoagent/');
           widths={[400, 800, 1200]}
           sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 90vw"
           alt={w.site.alt}
-          class="block aspect-[4/3] w-full rounded-2xl object-cover"
+          class="block aspect-video w-full rounded-2xl object-cover"
         />
         <div>
           <p class="mb-2 text-[15px] text-accent">{w.site.kicker}</p>
@@ -85,7 +85,7 @@ const caseUrl = localePath(lang, '/work/hecoagent/');
             widths={[400, 800]}
             sizes="(min-width: 1280px) 290px, (min-width: 640px) 45vw, 90vw"
             alt={item.alt}
-            class="block aspect-[4/3] w-full rounded-2xl object-cover"
+            class={`block aspect-video w-full rounded-2xl object-cover ${item.key === 'data' ? 'object-top' : ''}`}
           />
           <figcaption class="mt-3 text-base text-on-ink">{item.caption}</figcaption>
         </figure>

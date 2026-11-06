@@ -16,9 +16,9 @@ const points = Array.from({ length: 60 }, () => {
   return { x: Math.round(150 + (g - 0.38) * 260), y: Math.round(90 - (h - 0.42) * 220) };
 });
 ---
-<div class="rounded-2xl bg-panel p-4 text-ink" aria-hidden="true">
+<div class="flex aspect-video min-h-0 flex-col rounded-2xl bg-panel p-4 text-ink" aria-hidden="true">
   <p class="mb-1.5 text-[13px] font-semibold">{label}</p>
-  <svg viewBox="0 0 300 180" class="block h-auto w-full">
+  <svg viewBox="0 0 300 180" class="block min-h-0 w-full flex-1">
     <line x1="150" y1="6" x2="150" y2="174" stroke="#9AA3B8" stroke-width="1" />
     <line x1="6" y1="90" x2="294" y2="90" stroke="#9AA3B8" stroke-width="1" />
     <line x1="20" y1="170" x2="290" y2="12" stroke="#E0702E" stroke-width="1.5" stroke-dasharray="5 4" />

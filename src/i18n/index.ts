@@ -40,7 +40,7 @@ const en = {
   credentials: {
     label: "Background",
     items: [
-      { value: "7.5 years", text: "building for the web" },
+      { value: "8+ years", text: "building for the web" },
       { value: "MSc, Distinction", text: "Computer Science with Data Analytics, Keele" },
       { value: "BA (Hons)", text: "Graphic Design" },
       { value: "English & Dutch", text: "remote, NL, UK and beyond" },
@@ -66,7 +66,7 @@ const en = {
     site: {
       kicker: "Website rebuild and SEO",
       title: "hecoanalytics.com",
-      text: "Lighthouse audit, then a rebuild in Astro and Sanity, structured around four client segments. Performance [BEFORE] to [AFTER].",
+      text: "Lighthouse audit, then a rebuild in Astro and Sanity, structured around four client segments.",
       stack: "Astro, Sanity, Tailwind, SEO",
       alt: "The rebuilt hecoanalytics.com on a desktop screen",
     },
@@ -149,7 +149,7 @@ const en = {
   about: {
     title: "Hi, I'm Thorsten",
     paragraphs: [
-      "English-German, living in Enschede since 2018. I started in graphic design, moved into frontend development, and now build complete products: interface, backend and infrastructure.",
+      "I'm an Englishman based in Enschede since 2018. With a background in graphic design and frontend development, I now build complete digital products, covering everything from user interfaces to backend systems and infrastructure.",
       "I work remotely with clients in the Netherlands, the UK and further afield through my business, W3BL.",
     ],
     portraitAlt: "Portrait of Thorsten Bell",
@@ -162,6 +162,9 @@ const en = {
     email: "Email",
     message: "What are you building?",
     submit: "Send message",
+    sending: "Sending…",
+    success: "Thanks, your message has been sent. I'll get back to you soon.",
+    error: "Sorry, your message couldn't be sent. Please try again or email me at thorsten@w3bl.com.",
     required: "required",
   },
   footer: {
@@ -247,7 +250,7 @@ const nl: Content = {
   credentials: {
     label: "Achtergrond",
     items: [
-      { value: "7,5 jaar", text: "ervaring in webontwikkeling" },
+      { value: "8+ jaar", text: "ervaring in webontwikkeling" },
       { value: "MSc, Distinction", text: "Computer Science with Data Analytics, Keele" },
       { value: "BA (Hons)", text: "Graphic Design" },
       { value: "Nederlands & Engels", text: "op afstand, in NL, het VK en daarbuiten" },
@@ -350,7 +353,7 @@ const nl: Content = {
   about: {
     title: "Hoi, ik ben Thorsten",
     paragraphs: [
-      "Engels-Duits, en sinds 2018 woonachtig in Enschede. Ik begon in grafisch ontwerp, ging verder in frontend development en bouw nu complete producten: interface, backend en infrastructuur.",
+      "Engelsman, woonachtig in Enschede sinds 2018. Begonnen in grafisch ontwerp, doorgegroeid naar frontend development en inmiddels bouw ik complete digitale producten: van de gebruikersinterface tot de backend en infrastructuur.",
       "Via mijn bedrijf W3BL werk ik op afstand voor klanten in Nederland, het VK en daarbuiten.",
     ],
     portraitAlt: "Portret van Thorsten Bell",
@@ -363,6 +366,9 @@ const nl: Content = {
     email: "E-mail",
     message: "Wat ben je aan het bouwen?",
     submit: "Bericht versturen",
+    sending: "Versturen…",
+    success: "Bedankt, je bericht is verstuurd. Ik neem snel contact met je op.",
+    error: "Sorry, je bericht kon niet worden verstuurd. Probeer het opnieuw of mail me via thorsten@w3bl.com.",
     required: "verplicht",
   },
   footer: {
